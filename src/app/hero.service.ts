@@ -45,6 +45,13 @@ export class HeroService {
       );
   }
 
+  getSortedHeroes(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(this.heroesUrl).pipe(
+      map(heroes => heroes.sort((a, b) => a.id - b.id)),
+      catchError(this.handleError<Hero[]>('getSortedHeroes', []))
+    )
+  }
+
   getHero(id: number) : Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(

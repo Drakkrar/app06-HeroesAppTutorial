@@ -8,10 +8,13 @@
             (click)="delete(hero)">x</button>
     </li>
 </ul>
-<div>
-    <label for="new-hero">Hero name:</label>
-    <input id="new-hero" #heroName/>
-        <button type="button" class="add-button" (click)="add(heroName.value);
+<div class="new-hero-container">
+    <h2>Add new hero to the list</h2>
+    <label for="new-hero-name">Hero name:</label>
+    <input id="new-hero-name" #heroName/>
+    <label for="new-hero-score">Hero score:</label>
+    <input id="new-hero-score" type="number" value="0" #heroScore/>
+        <button type="button" class="add-button" (click)="add(heroName.value, heroScore.value);
         heroName.value=''">
             Add hero
         </button>
